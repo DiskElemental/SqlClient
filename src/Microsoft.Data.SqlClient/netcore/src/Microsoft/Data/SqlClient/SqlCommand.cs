@@ -267,6 +267,7 @@ namespace Microsoft.Data.SqlClient
 
         // transaction support
         private SqlTransaction _transaction;
+        private bool _notificationAutoEnlist = true;
 
         private StatementCompletedEventHandler _statementCompletedEventHandler;
 
@@ -433,6 +434,19 @@ namespace Microsoft.Data.SqlClient
             get
             {
                 return (SqlInternalConnectionTds)_activeConnection.InnerConnection;
+            }
+        }
+
+        /// <include file='../../../../../../../doc/snippets/Microsoft.Data.SqlClient/SqlCommand.xml' path='docs/members[@name="SqlCommand"]/NotificationAutoEnlist/*'/>
+        public bool NotificationAutoEnlist
+        {
+            get
+            {
+                return _notificationAutoEnlist;
+            }
+            set
+            {
+                _notificationAutoEnlist = value;
             }
         }
 
